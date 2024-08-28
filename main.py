@@ -75,21 +75,16 @@ def main():
     tag_counts_output_file = 'TagCounts.csv'
     port_protocol_output_file = 'PortProtocolCombinationCounts.csv'
 
-    # Read lookup table
     lookup_table = read_lookup_table(lookup_table_file)
 
-    # Process flow logs and get counts
     tag_counts, port_protocol_counts = process_flow_logs(flow_log_file, lookup_table)
 
-    # Write output to CSV files
     write_tag_counts(tag_counts, tag_counts_output_file)
     write_port_protocol_counts(port_protocol_counts, port_protocol_output_file)
 
-    # Print the contents of the output files
     print_file_contents(tag_counts_output_file)
     print_file_contents(port_protocol_output_file)
 
-# Run the script
 if __name__ == '__main__':
     main()
 
