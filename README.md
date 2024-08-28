@@ -29,6 +29,7 @@ This project is designed to parse and analyze flow log data, tagging each log en
 - `PortProtocolCombinationCounts.csv`: Output file containing port/protocol combination counts.
 - `clean_flow_logs.py`: Script to clean the `flow_logs.txt` file.
 - `main.py`: Main script to process flow logs and generate the output files.
+- `abstract_based_log_processor.py`: Contains the refactored code using Abstract Base Classes (ABCs) and principles to handle log processing, lookup table reading, and report generation.
 
 ## Requirements
 
@@ -49,9 +50,9 @@ python 'clean_flow_logs.py'
 
 This script will generate 'cleaned_flow_logs.txt' with cleaned flow log data.
 
-### 2. Process Flow Logs and Geenerate Outputs
+### 2. Process Flow Logs and Generate Outputs
 
-python main.py
+python main.py (or) python abstract_based_log_processor.py
 
 Run the main script to process the cleaned files and generate the output files.
 
@@ -66,6 +67,16 @@ Run the main script to process the cleaned files and generate the output files.
 - **Tagging Accuracy**: The tagging mechanism was tested to ensure accurate tagging based on the dstport and protocol combinations.
 - **Case Insensitivity**: Tagging is case-insensitive, meaning `TCP` and `tcp` are treated as the same.
 - **Performance Testing**: The program was tested with large log files (up to 10 MB) to ensure it handles large datasets efficiently.
+
+## Refactored Code Description
+
+This refactored version of the project employs Abstract Base Classes (ABCs) and adheres to SOLID principles to enhance modularity and maintainability.
+
+ - **AbstractLogProcessor** : Defines an abstract base class with methods for reading logs, processing data, and generating reports.
+ - **FlowLogProcessor** : Implements the abstract base class to handle flow log processing, including reading log files, applying the lookup table, and generating CSV reports for tag counts and port/protocol combinations.
+ - **LookupTableReader**: A utility class to read and parse the lookup table, creating a dictionary for quick tag lookups based on destination port and protocol.
+
+The modular design allows for easy extension and maintenance, following principles like Single Responsibility, Open/Closed, and Dependency Inversion.
 
 ## Analysis
 
